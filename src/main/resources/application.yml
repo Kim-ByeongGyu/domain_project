@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: copiedvelog
+  datasource:
+    url: jdbc:mysql://localhost:3308/exampldb
+    username: zenk555
+    password: pae5554785
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 80
