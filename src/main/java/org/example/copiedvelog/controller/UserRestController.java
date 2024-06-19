@@ -9,17 +9,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/userreg")
 public class UserRestController {
     private final UserService userService;
 
-    @GetMapping("/check-username")
-    public boolean checkUsername(@RequestParam String username) {
-        return userService.checkUsernameExists(username);
+    @GetMapping("/api/users/check-username")
+    public ResponseEntity<Boolean> checkUsername(@RequestParam String username) {
+        boolean isTaken = userService.isUsernameTaken(username);
+        return ResponseEntity.ok(isTaken);
     }
 
-    @GetMapping("/check-email")
-    public boolean checkEmail(@RequestParam String email) {
-        return userService.checkEmailExists(email);
+    @GetMapping("/api/users/check-email")
+    public ResponseEntity<Boolean> checkEmail(@RequestParam String email) {
+        boolean isTaken = userService.isEmailTaken(email);
+        return ResponseEntity.ok(isTaken);
     }
 }

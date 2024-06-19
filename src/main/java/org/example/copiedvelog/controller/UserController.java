@@ -3,6 +3,8 @@ package org.example.copiedvelog.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     
     @GetMapping("/api")
     public String api(Model model) {
@@ -30,22 +33,32 @@ public class UserController {
         return "userregform";
     }
 
-    @PostMapping("/api/userreg1")
-    public String registerUser(@RequestParam("userName") String userName,
+    @PostMapping("/api/userreg")
+    public String registerUser(@RequestParam("username") String username,
                                @RequestParam("email") String email,
                                @RequestParam("password") String password,
-                               @RequestParam("name") String name,
-                               Model model) {
-        User newUser = new User();
-        newUser.setUsername(userName);
-        newUser.setEmail(email);
-        newUser.setPassword(password);
-        newUser.setName(name);
+                               @RequestParam("name") String name) {
+        try {
 
-        userService.saveUser(newUser);
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password); // 실제로는 비밀번호 암호화가 필요
+            user.setName(name);
+            user.setEmail(email);
 
-        model.addAttribute("user", newUser);
+            userService.saveUser(user);
 
+            return "redirect:/welcome";
+        } catch (Exception e) {
+            return "redirect:/error";
+        }
+    }
+    @GetMapping("/welcome")
+    public String welcome() {
         return "welcome";
+    }
+    @GetMapping("/error")
+    public String error() {
+        return "error";
     }
 }
