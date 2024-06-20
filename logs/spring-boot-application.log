@@ -2174,3 +2174,362 @@ org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property o
 2024-06-20T15:45:35.047+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-06-20T15:45:35.047+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-06-20T15:45:35.048+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-20T15:52:28.055+09:00 ERROR 414936 --- [copiedvelog] [http-nio-80-exec-2] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-80-exec-2] Exception processing template "login": Error resolving template [login], template might not exist or might not be accessible by any of the configured Template Resolvers
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [login], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-06-20T15:52:28.094+09:00 ERROR 414936 --- [copiedvelog] [http-nio-80-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [login], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [login], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-06-20T15:57:43.613+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 9 class path changes (0 additions, 0 deletions, 9 modifications)
+2024-06-20T15:57:43.658+09:00  INFO 414936 --- [copiedvelog] [Thread-43] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:57:43.676+09:00  INFO 414936 --- [copiedvelog] [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2024-06-20T15:57:43.732+09:00  INFO 414936 --- [copiedvelog] [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2024-06-20T15:57:44.049+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T15:57:44.049+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T15:57:44.049+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T15:57:44.417+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T15:57:44.446+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 6 JPA repository interfaces.
+2024-06-20T15:57:44.665+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T15:57:44.668+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T15:57:44.668+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T15:57:44.708+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T15:57:44.708+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 657 ms
+2024-06-20T15:57:44.755+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T15:57:44.758+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T15:57:44.768+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T15:57:44.770+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2024-06-20T15:57:44.823+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-12 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b35ae43
+2024-06-20T15:57:44.823+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2024-06-20T15:57:44.968+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T15:57:45.214+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:57:45.328+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T15:57:45.485+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T15:57:45.498+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T15:57:45.503+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 1.498 seconds (process running for 2457.298)
+2024-06-20T15:57:45.504+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T15:58:27.862+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-06-20T15:58:27.873+09:00  INFO 414936 --- [copiedvelog] [Thread-47] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:58:27.874+09:00  INFO 414936 --- [copiedvelog] [Thread-47] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2024-06-20T15:58:27.893+09:00  INFO 414936 --- [copiedvelog] [Thread-47] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+2024-06-20T15:58:28.017+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T15:58:28.017+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T15:58:28.017+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T15:58:28.255+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T15:58:28.277+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 6 JPA repository interfaces.
+2024-06-20T15:58:28.385+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T15:58:28.386+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T15:58:28.386+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T15:58:28.426+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T15:58:28.426+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 406 ms
+2024-06-20T15:58:28.468+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T15:58:28.471+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T15:58:28.479+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T15:58:28.480+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Starting...
+2024-06-20T15:58:28.509+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-13 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ee7a916
+2024-06-20T15:58:28.509+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Start completed.
+2024-06-20T15:58:28.607+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T15:58:28.740+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:58:28.863+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T15:58:29.048+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T15:58:29.063+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T15:58:29.067+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 1.082 seconds (process running for 2500.862)
+2024-06-20T15:58:29.069+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T15:58:30.474+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2024-06-20T15:58:30.482+09:00  INFO 414936 --- [copiedvelog] [Thread-51] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:58:30.482+09:00  INFO 414936 --- [copiedvelog] [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
+2024-06-20T15:58:30.496+09:00  INFO 414936 --- [copiedvelog] [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+2024-06-20T15:58:30.703+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T15:58:30.703+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T15:58:30.703+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T15:58:30.907+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T15:58:30.935+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 6 JPA repository interfaces.
+2024-06-20T15:58:31.028+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T15:58:31.029+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T15:58:31.029+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T15:58:31.060+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T15:58:31.060+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 354 ms
+2024-06-20T15:58:31.099+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T15:58:31.101+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T15:58:31.110+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T15:58:31.110+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Starting...
+2024-06-20T15:58:31.137+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-14 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4730b6e4
+2024-06-20T15:58:31.137+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Start completed.
+2024-06-20T15:58:31.237+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T15:58:31.391+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:58:31.507+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T15:58:31.636+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T15:58:31.650+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T15:58:31.654+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 0.981 seconds (process running for 2503.449)
+2024-06-20T15:58:31.655+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T15:58:32.629+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-20T15:58:32.629+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-20T15:58:32.630+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-20T15:59:16.179+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-06-20T15:59:16.191+09:00  INFO 414936 --- [copiedvelog] [Thread-55] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:59:16.193+09:00  INFO 414936 --- [copiedvelog] [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown initiated...
+2024-06-20T15:59:16.224+09:00  INFO 414936 --- [copiedvelog] [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown completed.
+2024-06-20T15:59:16.355+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T15:59:16.356+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T15:59:16.356+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T15:59:16.553+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T15:59:16.576+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 6 JPA repository interfaces.
+2024-06-20T15:59:16.669+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T15:59:16.670+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T15:59:16.670+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T15:59:16.707+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T15:59:16.707+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 350 ms
+2024-06-20T15:59:16.746+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T15:59:16.748+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T15:59:16.759+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T15:59:16.760+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Starting...
+2024-06-20T15:59:16.799+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-15 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e87ef16
+2024-06-20T15:59:16.800+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Start completed.
+2024-06-20T15:59:16.932+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T15:59:17.134+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:59:17.264+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T15:59:17.386+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T15:59:17.400+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T15:59:17.404+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 1.071 seconds (process running for 2549.199)
+2024-06-20T15:59:17.405+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T15:59:18.829+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2024-06-20T15:59:18.835+09:00  INFO 414936 --- [copiedvelog] [Thread-59] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:59:18.836+09:00  INFO 414936 --- [copiedvelog] [Thread-59] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown initiated...
+2024-06-20T15:59:18.850+09:00  INFO 414936 --- [copiedvelog] [Thread-59] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown completed.
+2024-06-20T15:59:18.959+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T15:59:18.959+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T15:59:18.960+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T15:59:19.131+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T15:59:19.155+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 6 JPA repository interfaces.
+2024-06-20T15:59:19.235+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T15:59:19.237+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T15:59:19.237+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T15:59:19.266+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T15:59:19.266+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 306 ms
+2024-06-20T15:59:19.305+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T15:59:19.308+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T15:59:19.316+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T15:59:19.316+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Starting...
+2024-06-20T15:59:19.340+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-16 - Added connection com.mysql.cj.jdbc.ConnectionImpl@40b1fc6a
+2024-06-20T15:59:19.340+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Start completed.
+2024-06-20T15:59:19.433+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T15:59:19.556+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T15:59:19.655+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T15:59:19.775+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T15:59:19.794+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T15:59:19.798+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 0.863 seconds (process running for 2551.593)
+2024-06-20T15:59:19.800+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T15:59:22.243+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-20T15:59:22.243+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-20T15:59:22.245+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-20T16:00:07.282+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-06-20T16:00:07.286+09:00  INFO 414936 --- [copiedvelog] [Thread-63] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:07.287+09:00  INFO 414936 --- [copiedvelog] [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown initiated...
+2024-06-20T16:00:07.304+09:00  INFO 414936 --- [copiedvelog] [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown completed.
+2024-06-20T16:00:07.454+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T16:00:07.454+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T16:00:07.454+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T16:00:07.662+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T16:00:07.685+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 6 JPA repository interfaces.
+2024-06-20T16:00:07.770+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T16:00:07.770+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T16:00:07.770+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T16:00:07.802+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T16:00:07.802+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 346 ms
+2024-06-20T16:00:07.839+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T16:00:07.841+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T16:00:07.848+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T16:00:07.849+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Starting...
+2024-06-20T16:00:07.875+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c18c9ef
+2024-06-20T16:00:07.876+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Start completed.
+2024-06-20T16:00:07.963+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T16:00:08.127+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:08.228+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T16:00:08.344+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T16:00:08.357+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T16:00:08.360+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 0.929 seconds (process running for 2600.156)
+2024-06-20T16:00:08.361+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T16:00:09.509+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-20T16:00:09.509+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-20T16:00:09.512+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-20T16:00:09.777+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2024-06-20T16:00:09.782+09:00  INFO 414936 --- [copiedvelog] [Thread-67] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:09.782+09:00  INFO 414936 --- [copiedvelog] [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown initiated...
+2024-06-20T16:00:09.798+09:00  INFO 414936 --- [copiedvelog] [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown completed.
+2024-06-20T16:00:09.929+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T16:00:09.929+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T16:00:09.929+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T16:00:10.134+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T16:00:10.159+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 6 JPA repository interfaces.
+2024-06-20T16:00:10.251+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T16:00:10.251+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T16:00:10.251+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T16:00:10.288+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T16:00:10.288+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 358 ms
+2024-06-20T16:00:10.331+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T16:00:10.333+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T16:00:10.341+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T16:00:10.343+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Starting...
+2024-06-20T16:00:10.369+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-18 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e566a94
+2024-06-20T16:00:10.369+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Start completed.
+2024-06-20T16:00:10.463+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T16:00:10.622+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:10.744+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T16:00:10.892+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T16:00:10.906+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T16:00:10.908+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-20T16:00:10.908+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-20T16:00:10.909+09:00  INFO 414936 --- [copiedvelog] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-20T16:00:10.911+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 1.01 seconds (process running for 2602.707)
+2024-06-20T16:00:10.914+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T16:00:21.554+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-06-20T16:00:21.559+09:00  INFO 414936 --- [copiedvelog] [Thread-71] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:21.561+09:00  INFO 414936 --- [copiedvelog] [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown initiated...
+2024-06-20T16:00:21.579+09:00  INFO 414936 --- [copiedvelog] [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown completed.
+2024-06-20T16:00:21.700+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T16:00:21.700+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T16:00:21.700+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T16:00:21.907+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T16:00:21.930+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 6 JPA repository interfaces.
+2024-06-20T16:00:22.012+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T16:00:22.013+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T16:00:22.013+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T16:00:22.048+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T16:00:22.048+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 346 ms
+2024-06-20T16:00:22.088+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T16:00:22.090+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T16:00:22.100+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T16:00:22.101+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Starting...
+2024-06-20T16:00:22.138+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-19 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d0b9216
+2024-06-20T16:00:22.138+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Start completed.
+2024-06-20T16:00:22.249+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T16:00:22.399+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:22.502+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T16:00:22.601+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T16:00:22.614+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T16:00:22.619+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 0.941 seconds (process running for 2614.414)
+2024-06-20T16:00:22.621+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-20T16:00:24.041+09:00  INFO 414936 --- [copiedvelog] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2024-06-20T16:00:24.045+09:00  INFO 414936 --- [copiedvelog] [Thread-75] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:24.046+09:00  INFO 414936 --- [copiedvelog] [Thread-75] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown initiated...
+2024-06-20T16:00:24.060+09:00  INFO 414936 --- [copiedvelog] [Thread-75] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown completed.
+2024-06-20T16:00:24.168+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Starting CopiedvelogApplication using Java 21 with PID 414936 (D:\likelion\workspace\jenkins\copiedvelog\build\classes\java\main started by zenk5 in D:\likelion\workspace\jenkins\copiedvelog)
+2024-06-20T16:00:24.168+09:00 DEBUG 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-20T16:00:24.168+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-20T16:00:24.359+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-20T16:00:24.380+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 6 JPA repository interfaces.
+2024-06-20T16:00:24.468+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-20T16:00:24.469+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-20T16:00:24.469+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-20T16:00:24.534+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-20T16:00:24.534+09:00  INFO 414936 --- [copiedvelog] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 364 ms
+2024-06-20T16:00:24.579+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-20T16:00:24.583+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-20T16:00:24.592+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-20T16:00:24.593+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Starting...
+2024-06-20T16:00:24.618+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-20 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7d879590
+2024-06-20T16:00:24.619+09:00  INFO 414936 --- [copiedvelog] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Start completed.
+2024-06-20T16:00:24.722+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-20T16:00:24.856+09:00  INFO 414936 --- [copiedvelog] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-20T16:00:24.956+09:00  WARN 414936 --- [copiedvelog] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-20T16:00:25.068+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-20T16:00:25.080+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
+2024-06-20T16:00:25.085+09:00  INFO 414936 --- [copiedvelog] [restartedMain] o.e.copiedvelog.CopiedvelogApplication   : Started CopiedvelogApplication in 0.943 seconds (process running for 2616.881)
+2024-06-20T16:00:25.087+09:00  INFO 414936 --- [copiedvelog] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

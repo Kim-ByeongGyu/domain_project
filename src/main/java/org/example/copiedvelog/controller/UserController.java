@@ -70,13 +70,16 @@ public class UserController {
                             HttpServletRequest request,
                             Model model) {
         User user = userService.findByUsername(username);
-        if (user != null && user.getPassword().equals(password)) {
+        if (user == null) {
+            model.addAttribute("error", "없는 아이디입니다.");
+            return "loginform";
+        } else if (!user.getPassword().equals(password)) {
+            model.addAttribute("error", "잘못된 비밀번호입니다.");
+            return "loginform";
+        } else {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            return "redirect:/api"; // 로그인 성공 시 API 페이지로 리다이렉트
-        } else {
-            model.addAttribute("error", "Invalid username or password");
-            return "login"; // 로그인 실패 시 로그인 페이지로 돌아감
+            return "redirect:/api";
         }
     }
 
