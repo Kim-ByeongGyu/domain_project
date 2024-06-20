@@ -1,10 +1,9 @@
 package org.example.copiedvelog.repository;
 
-import org.example.copiedvelog.entity.Role;
+import org.example.copiedvelog.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
-    Role findByName(String name);
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 }
