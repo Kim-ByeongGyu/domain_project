@@ -11,7 +11,7 @@
         <a th:href="@{/api/loginform}">로그인</a>
     </div>
     <div th:if="${session.user != null}">
-        <span>환영합니다<span th:text="${session.user.username}">유저</span>님</span>
+        <a th:href="@{/api/user/velog}" th:text="${session.user.username}">유저</a>님</span>
         <a th:href="@{/api/logout}">로그아웃</a>
     </div>
 </header>
