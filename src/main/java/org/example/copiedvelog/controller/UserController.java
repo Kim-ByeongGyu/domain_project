@@ -1,5 +1,7 @@
 package org.example.copiedvelog.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.service.UserService;
@@ -61,4 +63,29 @@ public class UserController {
     public String error() {
         return "error";
     }
+
+    @PostMapping("/api/user/login")
+    public String loginUser(@RequestParam String username,
+                            @RequestParam String password,
+                            HttpServletRequest request,
+                            Model model) {
+        User user = userService.findByUsername(username);
+        if (user != null && user.getPassword().equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            return "redirect:/api"; // 로그인 성공 시 API 페이지로 리다이렉트
+        } else {
+            model.addAttribute("error", "Invalid username or password");
+            return "login"; // 로그인 실패 시 로그인 페이지로 돌아감
+        }
+    }
+
+    @RequestMapping("/api/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate(); // 세션 무효화
+        return "redirect:/api"; // 로그아웃 후 API 페이지로 리다이렉트
+    }
+
+
 }

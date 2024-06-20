@@ -47,4 +47,8 @@ public class UserService {
     public boolean isEmailTaken(String email) {
         return userRepository.existsByEmail(email);
     }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
