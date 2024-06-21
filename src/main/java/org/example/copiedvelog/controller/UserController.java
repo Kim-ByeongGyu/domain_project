@@ -41,7 +41,6 @@ public class UserController {
                                @RequestParam("password") String password,
                                @RequestParam("name") String name) {
         try {
-
             User user = new User();
             user.setUsername(username);
             user.setPassword(password); // 실제로는 비밀번호 암호화가 필요

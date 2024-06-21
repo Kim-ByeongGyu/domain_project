@@ -15,7 +15,7 @@ public class VelogService {
     private final VelogRepository velogRepository;
 
     @Transactional
-    public Velog save(Velog velog) {
+    public Velog saveVelog(Velog velog) {
         return velogRepository.save(velog);
     }
 
@@ -24,6 +24,10 @@ public class VelogService {
     }
     public List<Velog> findByOwner(User owner) {
         return velogRepository.findByOwner(owner);
+    }
+
+    public Velog findByName(String name){
+        return velogRepository.findByName(name);
     }
 
     @Transactional

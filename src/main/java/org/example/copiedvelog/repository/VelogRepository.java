@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface VelogRepository extends JpaRepository<Velog, Long> {
     public List<Velog> findByOwner(User owner);
+    public Velog findByName(String name);
 }
