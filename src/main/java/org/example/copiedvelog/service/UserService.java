@@ -62,4 +62,8 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    public User findByUsernameWithVelogs(String username) {
+        return userRepository.findByUsernameWithVelogs(username);
+    }
 }

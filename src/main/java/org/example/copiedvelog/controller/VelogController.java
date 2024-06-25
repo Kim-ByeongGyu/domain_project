@@ -6,8 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.example.copiedvelog.config.UserContext;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.entity.Velog;
+import org.example.copiedvelog.repository.UserRepository;
 import org.example.copiedvelog.service.VelogService;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,16 +20,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VelogController {
     private final VelogService velogService;
+    private final UserRepository userRepository;
 
     @GetMapping("/api/{username}/userinfo")
-    public String userInfo(HttpServletRequest request, Model model) {
+    @Transactional(readOnly = true)
+    public String userInfo(Model model) {
         User user = UserContext.getUser();
+        System.out.println(user);
         if (user != null) {
-//            List<Velog> velogs = velogService.findByOwner(user);
-//            model.addAttribute("velogs", velogs);
+            // Ensure the user is persisted
+            user = userRepository.findById(user.getId()).orElse(null);
+            if (user == null) {
+                return "redirect:/loginform";
+            }
+
+            List<Velog> velogs = velogService.findByOwner(user);
+            model.addAttribute("velogs", velogs);
+
+            model.addAttribute("username", user.getUsername());
+
             return "userinfo";
-        }
-        else {
+        } else {
             return "redirect:/loginform";
         }
     }
@@ -37,9 +51,8 @@ public class VelogController {
         return "createvelogform";
     }
     @PostMapping("/api/{username}/velogreg")
-    public String registerVelog(@ModelAttribute Velog velog, HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+    public String registerVelog(@ModelAttribute Velog velog, Model model) {
+        User user = UserContext.getUser();
 
         if (user == null) {
             model.addAttribute("error", "로그인이 필요합니다.");
@@ -53,6 +66,7 @@ public class VelogController {
     }
 
     @GetMapping("/api/{username}/velog/{velogName}")
+    @Transactional(readOnly = true)
     public String velogDetail(@PathVariable String username, @PathVariable String velogName, Model model, HttpServletRequest request) {
         Velog velog = velogService.findByName(velogName);
         if (velog == null || !velog.getOwner().getUsername().equals(username)) {
@@ -60,8 +74,7 @@ public class VelogController {
             return "error";
         }
 
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        User user = UserContext.getUser();
 
         model.addAttribute("velog", velog);
         model.addAttribute("user", user);

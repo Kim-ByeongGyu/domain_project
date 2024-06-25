@@ -24,9 +24,9 @@ public class UserController {
     
     @GetMapping("/api")
     public String api(HttpServletRequest request, Model model) {
-        User authUser = getAuthenticatedUser(request);
-
-        model.addAttribute("authUser", authUser);
+        User user = UserContext.getUser();
+        if (user != null)
+            model.addAttribute("authUser", user);
         return "api";
     }
 
@@ -103,18 +103,5 @@ public class UserController {
         cookie.setHttpOnly(true);
         response.addCookie(cookie);
         return "redirect:/api"; // 로그아웃 후 API 페이지로 리다이렉트
-    }
-
-    private User getAuthenticatedUser(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if ("auth".equals(cookie.getName())) {
-                    String username = cookie.getValue();
-                    return userService.findByUsername(username);
-                }
-            }
-        }
-        return null;
     }
 }
