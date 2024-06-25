@@ -5,16 +5,28 @@
         <title>User Info</title>
     </head>
     <body>
+    <header>
+        <div>Velog</div>
+        <div th:if="${#httpServletRequest.getCookies()?.![name == 'auth']}">
+            <a th:href="@{/api/loginform}">로그인</a>
+        </div>
+        <div th:unless="${#httpServletRequest.getCookies()?.![name == 'auth']}">
+            <a th:href="@{'/api/' + ${#httpServletRequest.getCookies()?.find { it.name == 'auth' }.value} + '/userinfo'}"
+               th:text="${#httpServletRequest.getCookies()?.find { it.name == 'auth' }.value}">유저</a>님
+            <a th:href="@{/api/logout}">로그아웃</a>
+        </div>
+    </header>
+
     <div>
         <h2>내 블로그</h2>
         <ul>
             <li th:each="velog : ${velogs}">
-                <a th:href="@{'/api/' + ${session.user.username} + '/velog/' + ${velog.name}}" th:text="${velog.name}"></a>
+                <a th:href="@{'/api/' + ${#httpServletRequest.getCookies()?.find { it.name == 'auth' }.value} + '/velog/' + ${velog.name}}"
+                   th:text="${velog.name}"></a>
             </li>
         </ul>
-        <a th:href="@{'/api/' + ${session.user.username} + '/createvelog'}">블로그 생성</a>
+        <a th:href="@{'/api/' + ${#httpServletRequest.getCookies()?.find { it.name == 'auth' }.value} + '/createvelog'}">블로그 생성</a>
     </div>
-    <div>
         <h2>좋아요 목록</h2>
     </div>
     </body>

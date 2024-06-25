@@ -30,7 +30,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
+    @Column(name = "registration_date")
     private LocalDateTime registrationDate;
 
 
@@ -51,7 +51,12 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Velog> velogs = new HashSet<>();
+
+    public void addVelog(Velog velog) {
+        velogs.add(velog);
+        velog.setOwner(this);
+    }
 
 }

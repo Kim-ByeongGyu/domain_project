@@ -1,8 +1,11 @@
 package org.example.copiedvelog.controller;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.example.copiedvelog.config.UserContext;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.service.UserService;
 import org.slf4j.Logger;
@@ -20,7 +23,10 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     
     @GetMapping("/api")
-    public String api(Model model) {
+    public String api(HttpServletRequest request, Model model) {
+        User authUser = getAuthenticatedUser(request);
+
+        model.addAttribute("authUser", authUser);
         return "api";
     }
 
@@ -56,7 +62,11 @@ public class UserController {
     }
     @GetMapping("/welcome")
     public String welcome() {
-        return "welcome";
+        User user = UserContext.getUser();
+        if (user != null)
+            return "welcome";
+        else
+            return "redirect:/loginform";
     }
     @GetMapping("/error")
     public String error() {
@@ -66,7 +76,7 @@ public class UserController {
     @PostMapping("/api/user/login")
     public String loginUser(@RequestParam String username,
                             @RequestParam String password,
-                            HttpServletRequest request,
+                            HttpServletResponse response,
                             Model model) {
         User user = userService.findByUsername(username);
         if (user == null) {
@@ -76,18 +86,35 @@ public class UserController {
             model.addAttribute("error", "잘못된 비밀번호입니다.");
             return "loginform";
         } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
+            Cookie cookie = new Cookie("auth", user.getUsername());
+            cookie.setPath("/");
+            cookie.setHttpOnly(true);   // 자바스크립트로는 쿠키에 접근할 수 없다.
+
+            response.addCookie(cookie);
             return "redirect:/api";
         }
     }
 
     @RequestMapping("/api/logout")
-    public String logout(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.invalidate(); // 세션 무효화
+    public String logout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("auth", null);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
         return "redirect:/api"; // 로그아웃 후 API 페이지로 리다이렉트
     }
 
-
+    private User getAuthenticatedUser(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("auth".equals(cookie.getName())) {
+                    String username = cookie.getValue();
+                    return userService.findByUsername(username);
+                }
+            }
+        }
+        return null;
+    }
 }

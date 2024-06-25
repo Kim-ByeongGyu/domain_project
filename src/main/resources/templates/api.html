@@ -7,11 +7,11 @@
 <body>
 <header>
     <div>Velog</div>
-    <div th:if="${session.user == null}">
+    <div th:if="${authUser == null}">
         <a th:href="@{/api/loginform}">로그인</a>
     </div>
-    <div th:if="${session.user != null}">
-        <a th:href="@{'/api/' + ${session.user.username} + '/userinfo'}" th:text="${session.user.username}">유저</a>님</span>
+    <div th:if="${authUser != null}">
+        <a th:href="@{'/api/' + ${authUser.username} + '/userinfo'}" th:text="${authUser.username}">유저</a>님</span>
         <a th:href="@{/api/logout}">로그아웃</a>
     </div>
 </header>
