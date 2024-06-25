@@ -32,7 +32,7 @@ public class AuthenticationFilter implements Filter {
 
             filterChain.doFilter(request, servletResponse);
         } finally {
-        UserContext.clear();
+            UserContext.clear();
         }
     }
 }

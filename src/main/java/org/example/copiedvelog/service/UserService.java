@@ -49,6 +49,8 @@ public class UserService {
     }
 
 
+
+
     public boolean isUsernameTaken(String username) {
         return userRepository.existsByUsername(username);
     }

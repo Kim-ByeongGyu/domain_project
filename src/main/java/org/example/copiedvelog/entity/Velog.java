@@ -24,7 +24,7 @@ public class Velog {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User owner;
 
     @OneToMany(mappedBy = "velog")
