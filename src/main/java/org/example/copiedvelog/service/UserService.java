@@ -48,9 +48,6 @@ public class UserService {
         userRepository.delete(user);
     }
 
-
-
-
     public boolean isUsernameTaken(String username) {
         return userRepository.existsByUsername(username);
     }
@@ -61,9 +58,5 @@ public class UserService {
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
-    }
-
-    public User findByUsernameWithVelogs(String username) {
-        return userRepository.findByUsernameWithVelogs(username);
     }
 }

@@ -12,7 +12,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByEmail(String email);
 
     User findByUsername(String username);
-
-    @Query("SELECT u FROM User u LEFT JOIN FETCH u.velogs WHERE u.username = :username")
-    User findByUsernameWithVelogs(@Param("username") String username);
 }

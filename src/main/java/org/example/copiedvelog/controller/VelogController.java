@@ -7,6 +7,7 @@ import org.example.copiedvelog.config.UserContext;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.entity.Velog;
 import org.example.copiedvelog.repository.UserRepository;
+import org.example.copiedvelog.service.UserService;
 import org.example.copiedvelog.service.VelogService;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
@@ -21,15 +22,15 @@ import java.util.List;
 public class VelogController {
     private final VelogService velogService;
     private final UserRepository userRepository;
+    private final UserService userService;
 
     @GetMapping("/api/{username}/userinfo")
     @Transactional(readOnly = true)
     public String userInfo(Model model) {
         User user = UserContext.getUser();
-        System.out.println(user);
+;
         if (user != null) {
-            // Ensure the user is persisted
-            user = userRepository.findById(user.getId()).orElse(null);
+            user = userService.findByUsername(user.getUsername());
             if (user == null) {
                 return "redirect:/loginform";
             }
@@ -53,7 +54,9 @@ public class VelogController {
     @PostMapping("/api/{username}/velogreg")
     public String registerVelog(@ModelAttribute Velog velog, Model model) {
         User user = UserContext.getUser();
-
+//        User user_owner = userService.findByUsername(user.getUsername());
+        Long userId = userService.findByUsername(user.getUsername()).getId();
+        user.setId(userId);
         if (user == null) {
             model.addAttribute("error", "로그인이 필요합니다.");
             return "loginform"; // 로그인 폼 페이지로 리다이렉트

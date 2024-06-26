@@ -28,12 +28,12 @@ public class AuthenticationFilter implements Filter {
                 }
             }
             if (auth != null) {
-//                User user = new User();
-//                user.setUsername(auth);
-//
-//                UserContext.setUser(user);
+                User user = new User();
+                user.setUsername(auth);
+
+                UserContext.setUser(user);
 //                User user = userService.findByUsername(auth);
-                User user = userService.findByUsernameWithVelogs(auth);
+//                User user = userService.findByUsernameWithVelogs(auth);
                 if (user != null) {
                     UserContext.setUser(user);
                 }

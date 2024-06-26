@@ -23,7 +23,7 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     
     @GetMapping("/api")
-    public String api(HttpServletRequest request, Model model) {
+    public String api(Model model) {
         User user = UserContext.getUser();
         if (user != null)
             model.addAttribute("authUser", user);
