@@ -20,12 +20,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/userregform", "/userreg", "/").permitAll()
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
 //                .formLogin(Customizer.withDefaults())
                 .formLogin(form -> form
-                        .loginPage("/loginform")
+                        .loginPage("/api/loginform")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/welcome")
                         .permitAll()
