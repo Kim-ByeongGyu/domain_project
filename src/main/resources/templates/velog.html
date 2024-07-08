@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>블로그 페이지</title>
+</head>
+<body>
+<header>
+    <div>
+        <h1 th:text="${velog.name}">블로그 이름</h1>
+    </div>
+    <div>
+        <a th:href="@{'/api/' + ${user.username} + '/userinfo'}" th:text="${user.username}">프로필</a>
+    </div>
+</header>
+<div>
+    <!-- 블로그 상세 내용 -->
+</div>
+</body>
+</html>

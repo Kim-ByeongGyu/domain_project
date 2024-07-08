@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Velog</title>
+</head>
+<body>
+<form th:action="@{/api/${username}/velogreg}" th:object="${velog}" method="post" >
+    <h1>블로그 생성하기</h1>
+    <span>블로그 이름</span>
+    <input type="text" th:field="*{name}"  placeholder="my_velog">
+    <button type="submit">생성하기</button>
+</form>
+</body>
+</html>
