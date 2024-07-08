@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"  xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <div>Velog</div>
+    <div th:if="${authUser == null}">
+        <a th:href="@{/api/loginform}">로그인</a>
+    </div>
+    <div th:if="${authUser != null}">
+        <a th:href="@{'/api/' + ${authUser.name} + '/userinfo'}" th:text="${authUser.name}">유저</a>님
+        <a th:href="@{/api/logout}">로그아웃</a>
+        <!--        <a href="/logout">로그아웃</a>-->
+    </div>
+</header>
+<div class="container">
+    <!--게시글-->
+</div>
+</body>
+</html>
