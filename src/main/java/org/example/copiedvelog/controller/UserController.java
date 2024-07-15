@@ -59,7 +59,7 @@ public class UserController {
                 }
             }
         }
-        return "domain";
+        return "api";
     }
 
     @GetMapping("/api/loginform")
@@ -156,10 +156,10 @@ public class UserController {
         }
     }
 
-    @GetMapping("/api/authtest")
-    public String authtest() {
-        return "authtest";
-    }
+//    @GetMapping("/api/authtest")
+//    public String authtest() {
+//        return "authtest";
+//    }
 
     @PostMapping("/refreshToken")
     public ResponseEntity refreshToken(HttpServletRequest request, HttpServletResponse response) {
