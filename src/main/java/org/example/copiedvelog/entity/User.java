@@ -34,6 +34,10 @@ public class User {
     @Column(name = "registration_date")
     private LocalDateTime registrationDate = LocalDateTime.now();
 
+    @Column(name = "social_id")
+    private String socialId;
+
+    private String provider;
 
     public void addRole(Role role) {
         roles.add(role);

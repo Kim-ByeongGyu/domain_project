@@ -24,12 +24,6 @@ server:
       max: 250
       min-spare: 20
 
-logging:
-  file:
-    name: logs/spring-boot-application.log
-  level:
-    org.example: DEBUG
-
 jwt:
   secretKey: 12345678901234567890123456789012
   refreshKey: 12345678901234567890123456789012

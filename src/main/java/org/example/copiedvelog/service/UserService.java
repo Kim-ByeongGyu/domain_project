@@ -81,4 +81,8 @@ public class UserService {
     public Optional<User> getUser(Long id) {
         return userRepository.findById(id);
     }
+
+    public Optional<User> findByProviderAndSocialId(String provider, String socialId){
+        return userRepository.findByProviderAndSocialId(provider,socialId);
+    }
 }

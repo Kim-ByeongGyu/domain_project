@@ -47,6 +47,9 @@ dependencies {
     implementation 'com.google.code.gson:gson'
 
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+
+    // OAuth2 Client
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 tasks.named('test') {
