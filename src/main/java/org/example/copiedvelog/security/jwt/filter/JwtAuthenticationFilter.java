@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.copiedvelog.security.dto.CustomUserDetails;
+import org.example.copiedvelog.security.CustomUserDetails;
 import org.example.copiedvelog.security.jwt.exception.JwtExceptionCode;
 import org.example.copiedvelog.security.jwt.token.JwtAuthenticationToken;
 import org.example.copiedvelog.security.jwt.util.JwtTokenizer;

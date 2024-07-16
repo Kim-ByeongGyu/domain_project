@@ -9,10 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.copiedvelog.dto.UserLoginResponseDto;
 import org.example.copiedvelog.entity.RefreshToken;
 import org.example.copiedvelog.entity.Role;
+import org.example.copiedvelog.entity.SocialLoginInfo;
 import org.example.copiedvelog.entity.User;
-import org.example.copiedvelog.security.dto.CustomUserDetails;
+import org.example.copiedvelog.security.CustomUserDetails;
 import org.example.copiedvelog.security.jwt.util.JwtTokenizer;
 import org.example.copiedvelog.service.RefreshTokenService;
+import org.example.copiedvelog.service.SocialLoginInfoService;
 import org.example.copiedvelog.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +40,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenizer jwtTokenizer;
     private final RefreshTokenService refreshTokenService;
+    private final SocialLoginInfoService socialLoginInfoService;
 
     @GetMapping("/api")
     public String api(HttpServletRequest request, Model model) {
@@ -209,5 +214,42 @@ public class UserController {
                 .build();
 
         return new ResponseEntity(responseDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/registerSocialUser")
+    public String registerSocialUser(@RequestParam("provider")String provider,
+                                     @RequestParam("socialId")String socialId,
+                                     @RequestParam("uuid")String uuid,
+                                     @RequestParam("name")String name,
+                                     Model model) {
+        model.addAttribute("provider", provider);
+        model.addAttribute("socialId", socialId);
+        model.addAttribute("uuid", uuid);
+        model.addAttribute("name", name);
+
+        return "users/registerSocialUser";
+    }
+
+    @PostMapping("/saveSocialUser")
+    public String saveSocialUser(@RequestParam("provider")  String provider, @RequestParam("socialId")
+    String socialId, @RequestParam("name")  String name, @RequestParam("username")  String username, @RequestParam("email")
+                                 String email, @RequestParam("uuid")  String uuid, Model model) {
+        Optional<SocialLoginInfo> socialLoginInfoOptional = socialLoginInfoService.findByProviderAndUuidAndSocialId(provider, uuid, socialId);
+
+        if (socialLoginInfoOptional.isPresent()) {
+            SocialLoginInfo socialLoginInfo = socialLoginInfoOptional.get();
+            LocalDateTime now = LocalDateTime.now();
+            Duration duration = Duration.between(socialLoginInfo.getCreatedAt(), now);
+
+            if (duration.toMinutes() > 20) {
+                return "redirect:/error"; // 20분 이상 경과한 경우 에러 페이지로 리다이렉트
+            }
+
+            // 유효한 경우 User 정보를 저장합니다.
+            userService.saveUser(username, name, email, socialId, provider,passwordEncoder);
+            return "redirect:/";
+        } else {
+            return "redirect:/error"; // 해당 정보가 없는 경우 에러 페이지로 리다이렉트
+        }
     }
 }

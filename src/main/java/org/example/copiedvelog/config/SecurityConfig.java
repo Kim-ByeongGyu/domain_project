@@ -1,10 +1,12 @@
 package org.example.copiedvelog.config;
 
 import lombok.RequiredArgsConstructor;
+import org.example.copiedvelog.security.CustomOAuth2AuthenticationSuccessHandler;
 import org.example.copiedvelog.security.CustomUserDetailsService;
 import org.example.copiedvelog.security.jwt.exception.CustomAuthenticationEntryPoint;
 import org.example.copiedvelog.security.jwt.filter.JwtAuthenticationFilter;
 import org.example.copiedvelog.security.jwt.util.JwtTokenizer;
+import org.example.copiedvelog.service.SocialUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,6 +33,8 @@ public class SecurityConfig {
     private final CustomUserDetailsService customUserDetailsService;
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final JwtTokenizer jwtTokenizer;
+    private final CustomOAuth2AuthenticationSuccessHandler customOAuth2AuthenticationSuccessHandler;
+    private final SocialUserService socialUserService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -41,10 +45,13 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.disable())
-//                .logout(logout -> logout
-//                        .logoutUrl("/logout")
-//                        .logoutSuccessUrl("/api")
-//                )
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/api/loginform")
+                        .defaultSuccessUrl("/api")
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(oAuth2UserService())
+                        )
+                )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenizer), UsernamePasswordAuthenticationFilter.class)
                 .userDetailsService(customUserDetailsService)
                 .sessionManagement(session -> session
@@ -54,7 +61,15 @@ public class SecurityConfig {
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .cors(cors -> cors.configurationSource(configurationSource()))
                 .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(customAuthenticationEntryPoint));
+                        .authenticationEntryPoint(customAuthenticationEntryPoint))
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/loginform")
+                        .failureUrl("/error")
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(this.oAuth2UserService())
+                        )
+                        .successHandler(customOAuth2AuthenticationSuccessHandler)
+                );
 
 
         return http.build();
@@ -70,6 +85,11 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", config);
 
         return source;
+    }
+
+    @Bean
+    public OAuth2UserService<OAuth2UserRequest, OAuth2User> oAuth2UserService() {
+        return new DefaultOAuth2UserService();
     }
 
     @Bean

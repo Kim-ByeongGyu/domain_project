@@ -1,4 +1,4 @@
-package org.example.copiedvelog.security.dto;
+package org.example.copiedvelog.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
