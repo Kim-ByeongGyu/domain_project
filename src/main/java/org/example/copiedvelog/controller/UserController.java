@@ -6,16 +6,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.copiedvelog.config.UserContext;
 import org.example.copiedvelog.dto.UserLoginResponseDto;
 import org.example.copiedvelog.entity.RefreshToken;
 import org.example.copiedvelog.entity.Role;
 import org.example.copiedvelog.entity.User;
+import org.example.copiedvelog.security.dto.CustomUserDetails;
 import org.example.copiedvelog.security.jwt.util.JwtTokenizer;
 import org.example.copiedvelog.service.RefreshTokenService;
 import org.example.copiedvelog.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,8 +92,11 @@ public class UserController {
 
     @GetMapping("/welcome")
     public String welcome() {
-        User user = UserContext.getUser();
-        if (user != null)
+        CustomUserDetails userDetails =
+                (CustomUserDetails) SecurityContextHolder.getContext()
+                        .getAuthentication()
+                        .getPrincipal();
+        if (userDetails != null)
             return "welcome";
         else
             return "redirect:/loginform";
@@ -104,6 +108,7 @@ public class UserController {
 
     @GetMapping("/api/logout")
     public String logout(HttpServletResponse response) {
+
         Cookie cookie = new Cookie("accessToken", null);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
@@ -155,11 +160,6 @@ public class UserController {
             return "redirect:/api";
         }
     }
-
-//    @GetMapping("/api/authtest")
-//    public String authtest() {
-//        return "authtest";
-//    }
 
     @PostMapping("/refreshToken")
     public ResponseEntity refreshToken(HttpServletRequest request, HttpServletResponse response) {

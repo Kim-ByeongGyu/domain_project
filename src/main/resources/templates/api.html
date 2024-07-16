@@ -11,7 +11,8 @@
         <a th:href="@{/api/loginform}">로그인</a>
     </div>
     <div th:if="${authUser != null}">
-        <a th:href="@{'/api/' + ${authUser.name} + '/userinfo'}" th:text="${authUser.name}">유저</a>님
+<!--        <a th:href="@{'/api/' + ${authUser.name} + '/userinfo'}" th:text="${authUser.name}">유저</a>님-->
+        <a th:href="@{'/api/' + ${authUser.name} + '/userinfo'}" sec:authentication="name">유저</a>님
         <a th:href="@{/api/logout}">로그아웃</a>
         <!--        <a href="/logout">로그아웃</a>-->
     </div>

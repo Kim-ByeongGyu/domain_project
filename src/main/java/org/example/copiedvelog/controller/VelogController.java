@@ -1,15 +1,15 @@
 package org.example.copiedvelog.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.example.copiedvelog.config.UserContext;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.entity.Velog;
 import org.example.copiedvelog.repository.UserRepository;
+import org.example.copiedvelog.security.dto.CustomUserDetails;
 import org.example.copiedvelog.service.UserService;
 import org.example.copiedvelog.service.VelogService;
 import org.hibernate.Hibernate;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -27,10 +27,10 @@ public class VelogController {
     @GetMapping("/api/{username}/userinfo")
     @Transactional(readOnly = true)
     public String userInfo(Model model) {
-        User user = UserContext.getUser();
-;
-        if (user != null) {
-            user = userService.findByUsername(user.getUsername());
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (userDetails != null) {
+            User user = userService.findByUsername(userDetails.getUsername());
             if (user == null) {
                 return "redirect:/loginform";
             }
@@ -53,14 +53,15 @@ public class VelogController {
     }
     @PostMapping("/api/{username}/velogreg")
     public String registerVelog(@ModelAttribute Velog velog, Model model) {
-        User user = UserContext.getUser();
-//        User user_owner = userService.findByUsername(user.getUsername());
-        Long userId = userService.findByUsername(user.getUsername()).getId();
-        user.setId(userId);
-        if (user == null) {
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (userDetails == null) {
             model.addAttribute("error", "로그인이 필요합니다.");
             return "loginform"; // 로그인 폼 페이지로 리다이렉트
         }
+
+        User user = userService.findByUsername(userDetails.getUsername());
+        Long userId = user.getId();
+        user.setId(userId);
 
         velog.setOwner(user);
         velogService.saveVelog(velog);
@@ -77,7 +78,11 @@ public class VelogController {
             return "error";
         }
 
-        User user = UserContext.getUser();
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = null;
+        if (userDetails != null) {
+            user = userService.findByUsername(userDetails.getUsername());
+        }
 
         model.addAttribute("velog", velog);
         model.addAttribute("user", user);
