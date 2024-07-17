@@ -14,7 +14,7 @@ function checkUsername() {
         return;
     }
     // 서버에 중복 확인 요청
-    $.get('/api/users/check-username', { username: username }, function(isTaken) {
+    $.get('/users/check-username', { username: username }, function(isTaken) {
         if (isTaken) { // 중복된 경우
             $('#username-result').text('아이디가 이미 사용 중입니다.').removeClass('valid').addClass('invalid');
             isUsernameValid = false;
@@ -36,7 +36,7 @@ function checkEmail() {
         return;
     }
     // 서버에 중복 확인 요청
-    $.get('/api/users/check-email', { email: email }, function(isTaken) {
+    $.get('/users/check-email', { email: email }, function(isTaken) {
         if (isTaken) { // 중복된 경우
             $('#email-result').text('이메일이 이미 사용 중입니다.').removeClass('valid').addClass('invalid');
             isEmailValid = false;

@@ -39,6 +39,8 @@ public class User {
 
     private String provider;
 
+    private String avatarUrl;
+
     public void addRole(Role role) {
         roles.add(role);
     }
@@ -58,6 +60,14 @@ public class User {
     public void addVelog(Velog velog) {
         velogs.add(velog);
         velog.setOwner(this);
+    }
+
+    public User(String socialId, String provider, String username, String email, String avatarUrl) {
+        this.socialId = socialId;
+        this.provider = provider;
+        this.username = username;
+        this.email = email;
+        this.avatarUrl = avatarUrl;
     }
 
 }

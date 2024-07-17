@@ -42,7 +42,7 @@ public class UserController {
     private final RefreshTokenService refreshTokenService;
     private final SocialLoginInfoService socialLoginInfoService;
 
-    @GetMapping("/api")
+    @GetMapping("/")
     public String api(HttpServletRequest request, Model model) {
         Cookie[] cookies = request.getCookies();
 
@@ -57,10 +57,14 @@ public class UserController {
 
                 if (claims != null) {
                     // 유효한 토큰
+                    log.info(claims.toString());
                     String username = claims.getSubject();
                     UserLoginResponseDto userInfo = UserLoginResponseDto.builder()
-                            .name(username)
+                            .name(claims.get("name", String.class))
+                            .username(username)
+                            .userId(claims.get("userId", Long.class))
                             .build(); // 최소한의 정보만 담음
+                    log.info(userInfo.toString());
                     model.addAttribute("authUser", userInfo); // 최소한의 사용자 정보를 모델에 추가
                 }
             }
@@ -68,18 +72,18 @@ public class UserController {
         return "api";
     }
 
-    @GetMapping("/api/loginform")
+    @GetMapping("/loginform")
     public String loginForm(Model model) {
         return "loginform";
     }
 
-    @GetMapping("/api/userregform")
+    @GetMapping("/userregform")
     public String userregform(Model model) {
         model.addAttribute("user", new User());
         return "userregform";
     }
 
-    @PostMapping("/api/userreg")
+    @PostMapping("/userreg")
     public String userreg(@ModelAttribute("user") User user, BindingResult result) {
         if (result.hasErrors()) {
             return "/api/userregform";
@@ -91,7 +95,7 @@ public class UserController {
         }
         userService.registUser(user);
 
-        return "redirect:/api";
+        return "redirect:/";
     }
 
 
@@ -111,7 +115,7 @@ public class UserController {
         return "error";
     }
 
-    @GetMapping("/api/logout")
+    @GetMapping("/logout")
     public String logout(HttpServletResponse response) {
 
         Cookie cookie = new Cookie("accessToken", null);
@@ -120,9 +124,12 @@ public class UserController {
         cookie.setMaxAge(0); // 쿠키 삭제
 
         response.addCookie(cookie);
-        return "redirect:/api"; // 로그아웃 후 API 페이지로 리다이렉트
+
+        log.info(cookie.getValue());
+
+        return "redirect:/"; // 로그아웃 후 API 페이지로 리다이렉트
     }
-    @PostMapping("/api/user/login")
+    @PostMapping("/user/login")
     public String loginUser(@RequestParam String username,
                             @RequestParam String password,
                             HttpServletResponse response,
@@ -162,7 +169,7 @@ public class UserController {
             response.addCookie(accessTokenCookie);
             response.addCookie(refreshTokenCookie);
 
-            return "redirect:/api";
+            return "redirect:/";
         }
     }
 
@@ -227,13 +234,17 @@ public class UserController {
         model.addAttribute("uuid", uuid);
         model.addAttribute("name", name);
 
-        return "users/registerSocialUser";
+        return "registerSocialUser";
     }
 
     @PostMapping("/saveSocialUser")
-    public String saveSocialUser(@RequestParam("provider")  String provider, @RequestParam("socialId")
-    String socialId, @RequestParam("name")  String name, @RequestParam("username")  String username, @RequestParam("email")
-                                 String email, @RequestParam("uuid")  String uuid, Model model) {
+    public String saveSocialUser(@RequestParam("provider")  String provider,
+                                 @RequestParam("socialId") String socialId,
+                                 @RequestParam("name")  String name,
+                                 @RequestParam("username")  String username,
+                                 @RequestParam("email") String email,
+                                 @RequestParam("uuid")  String uuid,
+                                 Model model) {
         Optional<SocialLoginInfo> socialLoginInfoOptional = socialLoginInfoService.findByProviderAndUuidAndSocialId(provider, uuid, socialId);
 
         if (socialLoginInfoOptional.isPresent()) {

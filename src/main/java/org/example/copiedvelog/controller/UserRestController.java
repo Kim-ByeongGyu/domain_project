@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserRestController {
     private final UserService userService;
 
-    @GetMapping("/api/users/check-username")
+    @GetMapping("/users/check-username")
     public ResponseEntity<Boolean> checkUsername(@RequestParam String username) {
         boolean isTaken = userService.isUsernameTaken(username);
         return ResponseEntity.ok(isTaken);
     }
 
-    @GetMapping("/api/users/check-email")
+    @GetMapping("/users/check-email")
     public ResponseEntity<Boolean> checkEmail(@RequestParam String email) {
         boolean isTaken = userService.isEmailTaken(email);
         return ResponseEntity.ok(isTaken);

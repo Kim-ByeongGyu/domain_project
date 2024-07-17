@@ -23,7 +23,7 @@ public class VelogController {
     private final UserRepository userRepository;
     private final UserService userService;
 
-    @GetMapping("/api/{username}/userinfo")
+    @GetMapping("/{username}/userinfo")
     @Transactional(readOnly = true)
     public String userInfo(Model model) {
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -45,12 +45,12 @@ public class VelogController {
         }
     }
 
-    @GetMapping("/api/{username}/createvelog")
+    @GetMapping("/{username}/createvelog")
     public String createVelog(Model model) {
         model.addAttribute("velog", new Velog());
         return "createvelogform";
     }
-    @PostMapping("/api/{username}/velogreg")
+    @PostMapping("/{username}/velogreg")
     public String registerVelog(@ModelAttribute Velog velog, Model model) {
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails == null) {
@@ -65,10 +65,10 @@ public class VelogController {
         velog.setOwner(user);
         velogService.saveVelog(velog);
 
-        return "redirect:/api/{username}/userinfo";
+        return "redirect:/{username}/userinfo";
     }
 
-    @GetMapping("/api/{username}/velog/{velogName}")
+    @GetMapping("/{username}/velog/{velogName}")
     @Transactional(readOnly = true)
     public String velogDetail(@PathVariable String username, @PathVariable String velogName, Model model, HttpServletRequest request) {
         Velog velog = velogService.findByName(velogName);

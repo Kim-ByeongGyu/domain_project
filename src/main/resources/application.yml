@@ -18,9 +18,11 @@ spring:
       client:
         registration:
           github:
-            client-id: Iv23lifntnkpAWqrlpag
-            client-secret: 055acf307c7a20dcf17b6b9f717a05f814827d42
+            client-id: Iv23liRKxUsHQSMDq2Ef
+            client-secret: 8a79f78504de5d72ec865584445bdf8890ac47d7
             scope:
+              - read:user
+              - user:email
               - email
               - profile
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"

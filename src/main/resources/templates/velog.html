@@ -10,7 +10,7 @@
         <h1 th:text="${velog.name}">블로그 이름</h1>
     </div>
     <div>
-        <a th:href="@{'/api/' + ${user.username} + '/userinfo'}" th:text="${user.username}">프로필</a>
+        <a th:href="@{'/' + ${user.username} + '/userinfo'}" th:text="${user.username}">프로필</a>
     </div>
 </header>
 <div>
