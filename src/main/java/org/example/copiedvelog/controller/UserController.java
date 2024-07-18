@@ -18,6 +18,7 @@ import org.example.copiedvelog.service.SocialLoginInfoService;
 import org.example.copiedvelog.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -57,14 +58,14 @@ public class UserController {
 
                 if (claims != null) {
                     // 유효한 토큰
-                    log.info(claims.toString());
+//                    log.info(claims.toString());
                     String username = claims.getSubject();
                     UserLoginResponseDto userInfo = UserLoginResponseDto.builder()
                             .name(claims.get("name", String.class))
                             .username(username)
                             .userId(claims.get("userId", Long.class))
                             .build(); // 최소한의 정보만 담음
-                    log.info(userInfo.toString());
+//                    log.info(userInfo.toString());
                     model.addAttribute("authUser", userInfo); // 최소한의 사용자 정보를 모델에 추가
                 }
             }
@@ -99,16 +100,28 @@ public class UserController {
     }
 
 
+//    @GetMapping("/welcome")
+//    public String welcome() {
+//        CustomUserDetails userDetails =
+//                (CustomUserDetails) SecurityContextHolder.getContext()
+//                        .getAuthentication()
+//                        .getPrincipal();
+//        if (userDetails != null)
+//            return "welcome";
+//        else
+//            return "redirect:/loginform";
+//    }
     @GetMapping("/welcome")
-    public String welcome() {
-        CustomUserDetails userDetails =
-                (CustomUserDetails) SecurityContextHolder.getContext()
-                        .getAuthentication()
-                        .getPrincipal();
-        if (userDetails != null)
-            return "welcome";
-        else
-            return "redirect:/loginform";
+    public String welcome(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.isAuthenticated() || authentication.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/loginform";  // 인증되지 않은 사용자는 로그인 페이지로 리디렉션
+        }
+
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        model.addAttribute("username", userDetails.getUsername());
+        return "welcome";
     }
     @GetMapping("/error")
     public String error() {

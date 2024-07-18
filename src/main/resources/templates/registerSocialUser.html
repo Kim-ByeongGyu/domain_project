@@ -4,34 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 정보 등록</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
+<div class="container mt-4">
     <h1>환영합니다!</h1>
     <p>기본 회원 정보를 등록해주세요.</p>
-    <form th:action="@{/saveSocialUser}" method="post">
-        <label for="name">이름</label>
-        <input type="text" id="name" name="name" th:value="${name}"> <br>
-
-        <label for="username">사용자 ID</label>
-        <input type="text" id="username" name="username"> <br>
-
-        <label for="email">email</label>
-        <input type="text" id="email" name="email">  <br>
-
+    <form th:action="@{/saveSocialUser}" method="post" class="form-group">
+        <div class="mb-3">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" th:value="${name}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="username">사용자 ID</label>
+            <input type="text" id="username" name="username" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="email">email</label>
+            <input type="text" id="email" name="email" class="form-control">
+        </div>
         <input type="hidden" name="socialId" th:value="${socialId}">
         <input type="hidden" name="provider" th:value="${provider}">
         <input type="hidden" name="uuid" th:value="${uuid}">
-        <div>
-            <input type="checkbox" id="terms" name="terms" required>
-            <label for="terms">이용약관과 개인정보취급방침에 동의합니다.</label>
+        <div class="form-check mb-3">
+            <input type="checkbox" id="terms" name="terms" class="form-check-input" required>
+            <label for="terms" class="form-check-label">이용약관과 개인정보취급방침에 동의합니다.</label>
         </div>
-
-        <div class="buttons">
-            <button type="button" onclick="window.location.href='/'">취소</button>
-            <button type="submit">가입</button>
+        <div class="d-flex justify-content-between">
+            <button type="button" onclick="window.location.href='/'" class="btn btn-secondary">취소</button>
+            <button type="submit" class="btn btn-primary">가입</button>
         </div>
     </form>
 </div>
-</body>
-</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5

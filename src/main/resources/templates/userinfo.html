@@ -1,21 +1,28 @@
-    <!DOCTYPE html>
-    <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-    <head>
-        <meta charset="UTF-8">
-        <title>User Info</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
     <div>
         <h2>내 블로그</h2>
-        <ul>
-            <li th:each="velog : ${velogs}">
+        <ul class="list-group">
+            <li th:each="velog : ${velogs}" class="list-group-item">
                 <a th:href="@{'/' + ${username} + '/velog/' + ${velog.name}}" th:text="${velog.name}"></a>
             </li>
         </ul>
-        <a th:href="@{'/' + ${username} + '/createvelog'}">블로그 생성</a>
+        <a th:href="@{'/' + ${username} + '/createvelog'}" class="btn btn-primary mt-3">블로그 생성</a>
     </div>
-    <div>
+    <div class="mt-4">
         <h2>좋아요 목록</h2>
     </div>
-    </body>
-    </html>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

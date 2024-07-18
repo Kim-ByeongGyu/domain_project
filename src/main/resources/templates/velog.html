@@ -2,19 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>블로그 페이지</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<header>
-    <div>
+<header class="bg-light p-3">
+    <div class="container d-flex justify-content-between">
         <h1 th:text="${velog.name}">블로그 이름</h1>
-    </div>
-    <div>
-        <a th:href="@{'/' + ${user.username} + '/userinfo'}" th:text="${user.username}">프로필</a>
+        <a th:href="@{'/' + ${user.username} + '/velog/' + ${velog.name} + '/posts/new'}">게시글 작성</a>
+        <a th:href="@{'/' + ${user.username} + '/userinfo'}" th:text="${user.username}" class="btn btn-outline-secondary">프로필</a>
     </div>
 </header>
-<div>
-    <!-- 블로그 상세 내용 -->
+<div class="container mt-4">
+    <div>
+        <h2>게시글 목록</h2>
+        <div th:each="post : ${posts}" class="card mb-3">
+            <div class="card-body">
+                <a class="card-title" th:href="@{'/' + ${user.username} + '/velog/' + ${velog.name} + '/postView/' + ${post.id}}" th:text="${post.title}">제목</a>
+<!--                <p class="card-text" th:text="${post.content}">내용</p>-->
+            </div>
+        </div>
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

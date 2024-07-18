@@ -2,10 +2,13 @@ package org.example.copiedvelog.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.example.copiedvelog.entity.Post;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.entity.Velog;
 import org.example.copiedvelog.repository.UserRepository;
 import org.example.copiedvelog.security.CustomUserDetails;
+import org.example.copiedvelog.service.PostService;
 import org.example.copiedvelog.service.UserService;
 import org.example.copiedvelog.service.VelogService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,14 +17,17 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class VelogController {
     private final VelogService velogService;
-    private final UserRepository userRepository;
     private final UserService userService;
+    private final PostService postService;
 
     @GetMapping("/{username}/userinfo")
     @Transactional(readOnly = true)
@@ -83,8 +89,49 @@ public class VelogController {
             user = userService.findByUsername(userDetails.getUsername());
         }
 
+        List<Post> posts = postService.findPostsByUserAndVelog(user, velog);
+
         model.addAttribute("velog", velog);
         model.addAttribute("user", user);
+        model.addAttribute("posts", posts);
         return "velog";
+    }
+
+    @GetMapping("/{username}/velog/{velogName}/posts/new")
+    public String showCreatePostForm(@PathVariable String username,
+                                     @PathVariable String velogName,
+                                     Model model) {
+        model.addAttribute("post", new Post());
+        model.addAttribute("username", username);
+        model.addAttribute("velogName", velogName);
+        return "createPost";
+    }
+
+    @PostMapping("/{username}/velog/{velogName}/createposts")
+    public String createPost(@PathVariable String username, @PathVariable String velogName, @ModelAttribute Post post) {
+        post.setUser(userService.findByUsername(username));
+        post.setVelog(velogService.findByName(velogName));
+        postService.createPost(post);
+        return "redirect:/{username}/velog/{velogName}";
+    }
+
+    @GetMapping("/{username}/velog/{velogName}/postView/{postId}")
+    public String getPost(@PathVariable String username,
+                          @PathVariable String velogName,
+                          @PathVariable Long postId,
+                          Principal principal,
+                          Model model) {
+        User user = userService.findByUsername(username);
+        Velog velog = velogService.findByName(velogName);
+
+        Optional<Post> post = postService.findByIdAndUserAndVelog(postId, user, velog);
+
+        if (post.isPresent()) {
+            model.addAttribute("post", post.get());
+
+            return "postcontent"; // 실제 포스트를 보여줄 HTML 파일 이름
+        } else {
+            return "error"; // 에러 페이지 이름
+        }
     }
 }

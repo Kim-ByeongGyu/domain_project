@@ -30,8 +30,15 @@ public class VelogService {
         return velogRepository.findByName(name);
     }
 
+    @Transactional(readOnly = true)
+    public Velog findByOwnerAndName(User owner, String name) {
+        return velogRepository.findByOwnerAndName(owner, name);
+    }
+
     @Transactional
     public void delete(Velog velog) {
         velogRepository.delete(velog);
     }
+
+
 }

@@ -54,16 +54,15 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable())
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/loginform")
-                        .failureUrl("/loginFailure")
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .userService(this.oauth2UserService())
-                        )
+//                        .failureUrl("/loginFailure")
+//                        .userInfoEndpoint(userInfo -> userInfo
+//                                .userService(this.oauth2UserService())
+//                        )
                         .successHandler(customOAuth2AuthenticationSuccessHandler)
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logoutform")
                         .logoutSuccessUrl("/")
-
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenizer), UsernamePasswordAuthenticationFilter.class)
                 .userDetailsService(customUserDetailsService)

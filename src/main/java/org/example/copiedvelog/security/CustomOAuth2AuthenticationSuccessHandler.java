@@ -9,6 +9,8 @@ import org.example.copiedvelog.entity.SocialLoginInfo;
 import org.example.copiedvelog.entity.User;
 import org.example.copiedvelog.service.SocialLoginInfoService;
 import org.example.copiedvelog.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Component
 public class CustomOAuth2AuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    private static final Logger log = LoggerFactory.getLogger(CustomOAuth2AuthenticationSuccessHandler.class);
     private final SocialLoginInfoService socialLoginInfoService;
     private final UserService userService;
 
@@ -53,10 +56,11 @@ public class CustomOAuth2AuthenticationSuccessHandler implements AuthenticationS
 
             // CustomUserDetails 생성
             CustomUserDetails customUserDetails = new CustomUserDetails(user.getUsername(), user.getPassword(), user.getName(), user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
-
             // Authentication 객체 생성 및 SecurityContext에 설정
             Authentication newAuth = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(newAuth);
+            log.info(customUserDetails.toString());
+            log.info(newAuth.toString());
 
             response.sendRedirect("/welcome");
 
