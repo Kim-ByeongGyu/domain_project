@@ -8,6 +8,10 @@ import org.example.copiedvelog.entity.Velog;
 import org.example.copiedvelog.repository.LikeRepository;
 import org.example.copiedvelog.repository.PostRepository;
 import org.example.copiedvelog.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,6 +60,7 @@ public class PostService {
         return postRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public void toggleLike(Long postId, String username) {
         Optional<Post> postOpt = postRepository.findById(postId);
         if (postOpt.isPresent()) {
@@ -81,7 +86,37 @@ public class PostService {
         }
     }
 
-    public String getVelogNameByPostId(Long postId) {
-        return postRepository.getVelogNameByPostId(postId).getName();
+    public Velog getVelogByPostId(Long postId) {
+        return postRepository.getVelogByPostId(postId);
+    }
+
+    @Transactional
+    public void incrementViews(Long postId) {
+        Optional<Post> postOpt = postRepository.findById(postId);
+        if (postOpt.isPresent()) {
+            Post post = postOpt.get();
+            post.setViews(post.getViews() + 1);
+            postRepository.save(post);
+        } else {
+            throw new IllegalArgumentException("Post not found with id: " + postId);
+        }
+    }
+
+    @Transactional
+    public void decrementViews(Long postId) {
+        Optional<Post> postOpt = postRepository.findById(postId);
+        if (postOpt.isPresent()) {
+            Post post = postOpt.get();
+            post.setViews(post.getViews() - 1);
+            postRepository.save(post);
+        } else {
+            throw new IllegalArgumentException("Post not found with id: " + postId);
+        }
+    }
+
+
+    public Page<Post> getPosts(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "views"));
+        return postRepository.findAll(pageable);
     }
 }

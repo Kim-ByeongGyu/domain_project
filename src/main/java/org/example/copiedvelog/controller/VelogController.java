@@ -121,6 +121,9 @@ public class VelogController {
                           @PathVariable Long postId,
                           Principal principal,
                           Model model) {
+        // 조회수 증가
+        postService.incrementViews(postId);
+
         User user = userService.findByUsername(username);
         Velog velog = velogService.findByName(velogName);
 

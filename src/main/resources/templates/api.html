@@ -22,7 +22,17 @@
     </div>
 </header>
 <div class="container mt-4">
-    <!--게시글-->
+    <div id="post-list">
+        <div th:each="post : ${postPage.content}">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${post.title}">Post Title</h5>
+                    <p class="card-text" th:text="${post.content}">Post Content</p>
+                    <p class="card-text">Views: <span th:text="${post.views}">0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

@@ -7,15 +7,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.copiedvelog.dto.UserLoginResponseDto;
-import org.example.copiedvelog.entity.RefreshToken;
-import org.example.copiedvelog.entity.Role;
-import org.example.copiedvelog.entity.SocialLoginInfo;
-import org.example.copiedvelog.entity.User;
+import org.example.copiedvelog.entity.*;
 import org.example.copiedvelog.security.CustomUserDetails;
 import org.example.copiedvelog.security.jwt.util.JwtTokenizer;
+import org.example.copiedvelog.service.PostService;
 import org.example.copiedvelog.service.RefreshTokenService;
 import org.example.copiedvelog.service.SocialLoginInfoService;
 import org.example.copiedvelog.service.UserService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -42,9 +41,11 @@ public class UserController {
     private final JwtTokenizer jwtTokenizer;
     private final RefreshTokenService refreshTokenService;
     private final SocialLoginInfoService socialLoginInfoService;
+    private final PostService postService;
 
     @GetMapping("/")
-    public String api(HttpServletRequest request, Model model) {
+    public String api(HttpServletRequest request, Model model
+            , @RequestParam(defaultValue = "0") int page) {
         Cookie[] cookies = request.getCookies();
 
         if (cookies != null) {
@@ -58,18 +59,21 @@ public class UserController {
 
                 if (claims != null) {
                     // 유효한 토큰
-//                    log.info(claims.toString());
                     String username = claims.getSubject();
                     UserLoginResponseDto userInfo = UserLoginResponseDto.builder()
                             .name(claims.get("name", String.class))
                             .username(username)
                             .userId(claims.get("userId", Long.class))
                             .build(); // 최소한의 정보만 담음
-//                    log.info(userInfo.toString());
                     model.addAttribute("authUser", userInfo); // 최소한의 사용자 정보를 모델에 추가
                 }
             }
         }
+
+        int size = 10;
+        Page<Post> postPage = postService.getPosts(page, size);
+        model.addAttribute("postPage", postPage);
+
         return "api";
     }
 
